@@ -10,6 +10,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.ValueCallback;
@@ -132,15 +135,42 @@ public class WebActivity extends AppCompatActivity {
         }
     }
 
+    private boolean doubleBackToExitPressedOnce;
+    private Handler mHandler = new Handler();
+
+    private final Runnable mRunnable = new Runnable() {
+        @Override
+        public void run() {
+            doubleBackToExitPressedOnce = false;
+        }
+    };
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+
+        if (mHandler != null) { mHandler.removeCallbacks(mRunnable); }
+    }
 
     @Override
     public void onBackPressed() {
-        if (webView.canGoBack()) {
-            webView.goBack();
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
             return;
+        }else {
+            webView.canGoBack();
+                webView.goBack();
+
         }
-        super.onBackPressed();
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        mHandler.postDelayed(mRunnable, 2000);
     }
+
+
     @SuppressLint("ClickableViewAccessibility")
     private void initWebView() {
         webView.setWebChromeClient(new MyWebChromeClient(this));
@@ -242,7 +272,7 @@ public class WebActivity extends AppCompatActivity {
         }
     }
 
-    public  boolean getInternetStatus() {
+    public void getInternetStatus() {
         ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         boolean isConnected = activeNetwork != null &&
@@ -253,7 +283,8 @@ public class WebActivity extends AppCompatActivity {
             Df df= new Df(this);
             df.showNoInternetDialog();
         }
-        return isConnected;
     }
+
+
 }
 
