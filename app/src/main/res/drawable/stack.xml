@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--    <shape-->
+<!--        xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        android:shape="rectangle"-->
+
+<!--    >-->
+
+<!--        <solid-->
+<!--            android:color="#FFFFFF" >-->
+<!--        </solid>-->
+
+<!--        <stroke-->
+<!--            android:width="2dp"-->
+<!--            android:color="#C8C8C8" >-->
+<!--        </stroke>-->
+
+<!--        <padding-->
+<!--            android:left="100dp"-->
+<!--            android:top="100dp"-->
+<!--            android:right="100dp"-->
+<!--            android:bottom="100dp"    >-->
+<!--        </padding>-->
+
+<!--        <corners-->
+<!--            android:radius="11dp"   >-->
+<!--        </corners>-->
+
+<!--    </shape>-->
+
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Bottom 2dp Shadow -->
+    <item>
+        <shape  android:shape="rectangle">
+            <solid android:color="#19D8D8D8" />
+            <corners android:radius="7dp" />
+
+        </shape>
+    </item>
+
+    <!-- White Top color -->
+    <item android:bottom="10px"
+        android:right="10px"
+        >
+
+
+
+        <shape  android:shape="rectangle">
+
+            <solid android:color="#FFFFFF" />
+            <corners android:radius="7dp" />
+            <padding
+                android:left="60dp"
+                android:top="60dp"
+                android:right="60dp"
+                android:bottom="60dp"    >
+            </padding>
+
+        </shape>
+
+    </item>
+
+
+</layer-list>
