@@ -42,6 +42,7 @@
     <!-- White Top color -->
     <item android:bottom="10px"
         android:right="10px"
+
         >
 
 
@@ -51,10 +52,10 @@
             <solid android:color="#FFFFFF" />
             <corners android:radius="7dp" />
             <padding
-                android:left="60dp"
-                android:top="60dp"
-                android:right="60dp"
-                android:bottom="60dp"    >
+                android:left="50dp"
+                android:top="50dp"
+                android:right="50dp"
+                android:bottom="50dp"    >
             </padding>
 
         </shape>
