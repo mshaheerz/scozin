@@ -2,5 +2,5 @@
     <string name="app_name">scozin</string>
     <string name="welcome_to">Welcome to</string>
     <string name="no_internet_title">No Internet</string>
-    <string name="base_url">https://scozin.classickyc.com</string>
+    <string name="base_url">https://scozin.classickyc.com/dashboard</string>
 </resources>
