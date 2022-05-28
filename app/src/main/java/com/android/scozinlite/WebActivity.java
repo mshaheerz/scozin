@@ -43,7 +43,7 @@ public class WebActivity extends AppCompatActivity {
         setContentView(R.layout.activity_web);
         webView = findViewById(R.id.webView);
 
-        progressBar = findViewById(R.id.webProgressBar);
+
 
 
 
@@ -148,7 +148,7 @@ public class WebActivity extends AppCompatActivity {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                progressBar.setVisibility(View.VISIBLE);
+                findViewById(R.id.webProgressBar).setVisibility(View.VISIBLE);
                 invalidateOptionsMenu();
             }
 
@@ -161,7 +161,7 @@ public class WebActivity extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                progressBar.setVisibility(View.GONE);
+                findViewById(R.id.webProgressBar).setVisibility(View.GONE);
 //                mySwipeRefreshLayout.setRefreshing(false);
                 invalidateOptionsMenu();
             }
@@ -169,7 +169,7 @@ public class WebActivity extends AppCompatActivity {
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
-                progressBar.setVisibility(View.GONE);
+                findViewById(R.id.webProgressBar).setVisibility(View.GONE);
 //                mySwipeRefreshLayout.setRefreshing(false);
 
                 webView.loadUrl("file:///android_asset/error.html");
